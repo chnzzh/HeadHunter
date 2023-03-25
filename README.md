@@ -25,7 +25,7 @@ Future features include:
 1. The ability to switch between infected and connected zombie connections
 2. A more featureful payload (The current payload is just a simple and rather bland reverse shell connection). This would include beaconing, file transfer, persistance methods, and more. As well as a dedicated windows payload, as the currently payload is untested on Windows as the server is intended to be for Unix like operating systems
 3. Encryption for server/payload communcation
-
+4. An installer that creates bash script to mimic a binary on path. HeadHunter will be runnable from any directory
 
 
 I am not liable for any damage caused by this software. This software is for educational purposes only. This software is under the discretion of the end user.
