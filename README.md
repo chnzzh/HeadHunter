@@ -12,20 +12,20 @@
  ░  ░  ░   ░  ░     ░  ░   ░     ░  ░  ░   ░              ░             ░  ░   ░
                          ░
 
-  Command and Control Server (C2) and Payload Generator
+  Command and Control Server (C2) for Unix like operating systems
   Author: Logan Goins
 
 ```
 
 ## Notes
-This is a re-write of the software HeadHunter in python. HeadHunter was written entirely in C, but I've decided that python is a much better language for the software. Currently this version of HeadHunter is the equivalent of an older version of HeadHunter-C. This software currently receives and handles a reverse shell connection, giving the operator of the server control of the infected zombie device. This version of HeadHunter is also quite cross compatible like the last. Most reverse shell connections are able to be handled, netcat connections with the -e flag included.
-Although this software is technically a "lesser" version of the HeadHunter-C software, it's sizeably smaller and less complex than it's previous counterpart. This shows that by using python the development process can be simplified, and I can get this re-write operating with the same functionality as it's C counterpart in a smaller amount of time. (See https://github.com/Lionskey/HeadHunter-C)
+This software receives and handles a reverse shell connection, giving the operator of the (C&C) server access to the infected zombie device. 
 
-Future features still include:
+Future features include:
 
 1. The ability to switch between infected and connected zombie connections
-2. Some sort of daemonized process or thread that recursively accepts new machines to allow session switching
-3. A more featureful payload (The current payload is just a simple and rather bland reverse shell connection). This would include beaconing, file transfer, persistance methods, and more.
+2. A more featureful payload (The current payload is just a simple and rather bland reverse shell connection). This would include beaconing, file transfer, persistance methods, and more. As well as a dedicated windows payload, as the currently payload is untested on Windows as the server is intended to be for Unix like operating systems
+3. Encryption for server/payload communcation
+
 
 
 I am not liable for any damage caused by this software. This software is for educational purposes only. This software is under the discretion of the end user.
