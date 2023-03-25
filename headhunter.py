@@ -45,7 +45,7 @@ while True:
 		cmd = command[0]
 		params = [cmd]
 
-
+	
 	if cmd == "listen":
 		server.listen(subcmd, int(arg))
 
@@ -55,10 +55,19 @@ while True:
 ------------------------------------------------------------------------------------------------------
 help                      --          displays this menu
 listen <LHOST> <LPORT>    --	      starts listening for zombies on the specified local address and port
+show connections	  -- 	      displays active zombie connections by address and source port
 exit                      --          exits the headhunter interactive shell
 
 
 		''')
 
+	if cmd == "show" and subcmd == "connections":
+		session = 0
+		for i in server.c:
+			if(i != None):
+				session+=1
+				print("session " + str(session) + " connected on address: " + str(i.getpeername()))
+		print()	
+
 	if cmd == "exit":
-		exit(0)
+		exit()
