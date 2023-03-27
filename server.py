@@ -31,7 +31,7 @@ def listen(host, port):
 
 	print("got connection from " + str(addr[0]) + " starting reverse shell session. Type \"exit\" to return to HeadHunter interactive shell\n")
 
-	thread = threading.Thread(target=acceptor, args=(c, addr, s))
+	thread = threading.Thread(target=acceptor, args=(c, addr, s), daemon=True)
 	thread.start()
 	global activefd
 	global activeaddr
