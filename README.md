@@ -12,7 +12,7 @@
  ░  ░  ░   ░  ░     ░  ░   ░     ░  ░  ░   ░              ░             ░  ░   ░
                          ░
 
-  Command and Control Server (C2) for GNU/Linux based operating systems
+  Command and Control Server (C2)
   Author: Logan Goins
 
 ```
