@@ -23,7 +23,7 @@ print(
  ░  ░  ░   ░  ░     ░  ░   ░     ░  ░  ░   ░              ░             ░  ░   ░     
                          ░                                                           
 
-Command and Control Server (C2) for Unix like operating systems
+Command and Control Server (C2)
 Author: Logan Goins
 
 type \'help\' for available commands
