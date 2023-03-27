@@ -12,7 +12,7 @@
  ░  ░  ░   ░  ░     ░  ░   ░     ░  ░  ░   ░              ░             ░  ░   ░
                          ░
 
-  Command and Control Server (C2) for Unix like operating systems
+  Command and Control Server (C2) for GNU/Linux based operating systems
   Author: Logan Goins
 
 ```
@@ -23,7 +23,7 @@ This software receives and handles a reverse shell connection, giving the operat
 Future features include:
 
 
-1. A more featureful payload (The current payload is just a simple and rather bland reverse shell connection). This would include beaconing, file transfer, persistance methods, and more. As well as a dedicated windows payload, as the currently payload is untested on Windows as the server is intended to be for Unix like operating systems
+1. A more featureful payload (The current payload is just a simple and rather bland reverse shell connection). This would include beaconing, file transfer, persistance methods, and more. As well as a dedicated windows payload, as the currently payload is untested on Windows as the server is intended to be for GNU/Linux based operating systems
 2. Encryption for server/payload communcation
 3. An installer that creates bash script to mimic a binary on path. HeadHunter will be runnable from any directory
 4. The ability to command multiple connected sessions
