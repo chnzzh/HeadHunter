@@ -35,15 +35,18 @@ I am not liable for any damage caused by this software. This software is for edu
 ## Use Guide
 
 1. Clone the HeadHunter source
-
-```git clone https://github.com/Lionskey/HeadHunter```
+```
+git clone https://github.com/Lionskey/HeadHunter
+```
 
 2. Change into source directory
-
-```cd HeadHunter```
+```
+cd HeadHunter
+```
 
 3. Execute main file
-
-```python3 headhunter.py```
+```
+python3 headhunter.py
+```
 
 For Windows binaries/executables I recommend auto-py-to-exe or pyinstaller to convert the payload to an executable. Make sure to change the attacker connect back address in the payload before compilation. 
