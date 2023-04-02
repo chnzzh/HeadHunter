@@ -6,7 +6,7 @@
 
 
 import readline
-import server
+from src import server
 import sys 
 
 print(
