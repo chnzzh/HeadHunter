@@ -24,8 +24,7 @@ Future features include:
 
 
 1. A more featureful payload (The current payload is just a simple and rather bland reverse shell connection). This would include beaconing, file transfer, persistance methods, and more. As well as a dedicated windows payload, as the currently payload is untested on Windows as the server is intended to be for GNU/Linux based operating systems
-2. RSA 2048 bit encryption for communication between payload and server
-3. The ability to command multiple connected sessions
+2. The ability to command multiple connected sessions
 
 
 
