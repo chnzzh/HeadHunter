@@ -5,7 +5,6 @@
 
 
 
-import readline
 from src import server
 import sys 
 
@@ -30,7 +29,6 @@ type \'help\' for available commands
 ''')
 
 
-readline.set_auto_history(True)
 while True:
 	command = input("HeadHunter/> ").lower().split(" ")
 	print(" ")
