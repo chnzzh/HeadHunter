@@ -29,7 +29,7 @@ def listen(host, port):
 
 	c[0], addr[0] = s.accept()
 
-	print("got connection from " + str(addr[0]) + " starting reverse shell session. Type \"exit\" to return to HeadHunter interactive shell\n")
+	print("got connection from " + str(addr[0]) + ". Starting reverse shell session. Type \"exit\" to return to the HeadHunter interactive shell\n")
 
 	thread = threading.Thread(target=acceptor, args=(c, addr, s), daemon=True)
 	thread.start()
