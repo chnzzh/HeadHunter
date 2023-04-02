@@ -18,7 +18,7 @@
 ```
 
 ## Dependencies
-rsa (pip install rsa)
+rsa (```pip install rsa```)
 
 ## Notes
 HeadHunter is a cross platform, session based command and control (C2) server to handle reverse shell connections from infected zombie devices. The operator of HeadHunter has the ability to switch between multiple infected devices through the interactive shell interface. All communications between HeadHunter and the custom payload are encrypted in NIST recommended RSA 2048 bit asymmetric encryption. 
