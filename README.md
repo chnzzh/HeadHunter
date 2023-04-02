@@ -24,7 +24,6 @@ Future features include:
 
 
 1. A more featureful payload (The current payload is just a simple and rather bland reverse shell connection). This would include beaconing, file transfer, persistance methods, and more. As well as a dedicated windows payload, as the currently payload is untested on Windows as the server is intended to be for GNU/Linux based operating systems
-2. An installer that creates bash script to mimic a binary on path. HeadHunter could be run from any directory
 3. The ability to command multiple connected sessions
 
 
@@ -43,9 +42,14 @@ git clone https://github.com/Lionskey/HeadHunter
 cd HeadHunter
 ```
 
-3. Execute main file
+3. Execute install script
 ```
-python3 headhunter.py
+sudo ./install.sh
+```
+
+4. Run HeadHunter interactive shell
+```
+headhunter
 ```
 
 For Windows binaries/executables I recommend auto-py-to-exe or pyinstaller to convert the payload to an executable. Make sure to change the attacker connect back address in the payload before compilation. 
