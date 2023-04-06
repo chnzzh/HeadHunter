@@ -49,6 +49,11 @@ sudo ./install.sh
 headhunter
 ```
 
+Alternatively you can just run the headhunter python file if you would like your file system unchanged
+```
+python3 headhunter.py
+```
+
 The HeadHunter payload is located in the "src" directory. Change the connect back address in the source code to the address of your C2 server. When your target runs a Windows compiled executable of the payload (or just the payload itself) it will connect back to the C2 server. This will give the operator control of the infected device.
 
 ## Extra Notes
