@@ -21,10 +21,10 @@ def acceptor(c, addr, s):
 		i+=1
 		
 
-def listen(host, port):
+def listen(port):
 	
 	s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-	s.bind((host, port))
+	s.bind(("0.0.0.0", port))
 	s.listen(100)
 
 	print("\nListening on port " + str(port) + " for connections")

