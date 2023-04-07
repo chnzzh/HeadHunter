@@ -16,6 +16,9 @@
   Author: Logan Goins
 
 ```
+## Showcase
+
+![ezgif-2-764ac63be5](https://user-images.githubusercontent.com/55106700/230660106-0db0e26c-1fe1-4390-9fab-1cc12083beea.gif)
 
 ## About
 HeadHunter is a cross platform, session based command and control (C2) server to handle reverse shell connections from infected zombie devices. The operator of HeadHunter has the ability to switch between multiple infected devices through the interactive shell interface. All communications between HeadHunter and the custom payload are encrypted in NIST recommended RSA 2048 bit asymmetric encryption. 
