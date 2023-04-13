@@ -39,7 +39,7 @@ rsa: Install with
  
 ```pip install rsa```
 
-## Use Guide
+## Use Guide (With GNU/Linux)
 
 1. Clone the HeadHunter source
 ```
@@ -61,7 +61,7 @@ sudo ./install.sh
 headhunter
 ```
 
-Alternatively you can just run the headhunter python file if you would like your file system unchanged
+Alternatively you can just run the headhunter python file if you would like your file system unchanged or you are on Windows
 ```
 python3 headhunter.py
 ```
