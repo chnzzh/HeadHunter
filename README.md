@@ -39,6 +39,15 @@ rsa: Install with
  
 ```pip install rsa```
 
+netifaces: Install with
+
+```pip install netifaces```
+
+
+If you're running headhunter on a Debian based GNU/Linux distribution, then install the HeadHunter python library files by using apt.
+
+```sudo apt install python3-rsa python3-netifaces```
+
 ## Use Guide (With GNU/Linux)
 
 1. Clone the HeadHunter source
