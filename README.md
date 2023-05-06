@@ -79,4 +79,4 @@ The HeadHunter payload is located in the "src" directory. Change the connect bac
 
 ## Extra Notes
 
-For Windows binaries/executables I recommend auto-py-to-exe or pyinstaller to convert the payload to an executable. Make sure to change the attacker connect back address in the payload code before compilation. Also note that cross-compilation is impossible. Unfortunately to compile for Windows you will need a Windows installation of your own. I'm still currently looking for a solution on cross-compilation, but pyinstaller does not support it. 
+For Windows binaries/executables I recommend auto-py-to-exe or pyinstaller to convert the payload to an executable. Also note that cross-compilation is impossible. Unfortunately to compile for Windows you will need a Windows installation of your own. I'm still currently looking for a solution on cross-compilation, but pyinstaller does not support it. 
